@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Brain, Cpu, Zap } from 'lucide-react';
 
 
-const aboutAIModelsData = [
+const aboutAIModelsData = 
+[
   {
     id: 1,
     name: "Neural Networks",
