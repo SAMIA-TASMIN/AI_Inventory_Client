@@ -5,13 +5,19 @@ const Navbar = () => {
   const links = (
     <>
       <li>
-       <Link> Home </Link>
+       <Link to={'/'}> Home </Link>
       </li>
       <li>
-       <Link> Item 1</Link>
+       <Link to={'/allmodels'}>All Models</Link>
       </li>
       <li>
-       <Link> Item 1</Link>
+       <Link to={'/addmodels'}> Add Models</Link>
+      </li>
+      <li>
+       <Link to={'/register'}>Registration</Link>
+      </li>
+      <li>
+       <Link to={'/login'}>Log In</Link>
       </li>
 
      

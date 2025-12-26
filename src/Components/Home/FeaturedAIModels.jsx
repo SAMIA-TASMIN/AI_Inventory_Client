@@ -15,7 +15,7 @@ const FeaturedAIModels = () => {
   return (
     <div className="min-h-screen my-10 py-5 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 p-4 sm:p-8">
      <div className="max-w-7xl mx-auto">
-
+    
          <div className="flex items-center gap-3 mb-6 sm:mb-8">
         <Brain className="w-5 h-5 sm:w-6 sm:h-6 text-blue-400" />
         <h2 className="text-2xl sm:text-3xl font-bold text-white">
