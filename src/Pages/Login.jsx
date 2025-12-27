@@ -1,15 +1,36 @@
-import React from 'react';
+import React, { use } from 'react';
 import { Link } from 'react-router';
+import { AuthContext } from '../contexts/AuthContext';
 
 const Login = () => {
+     const { signInWithGoogle,signInWithEmailAndPassword } = use(AuthContext);
     const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Login data:');
+    const email= e.target.email.value;
+    const password = e.target.password.value;
+    const newUser = {
+     email,password
+    }
+    signInWithEmailAndPassword(email,password)
+     .then((userCredential) => {
+    
+    const user = userCredential.user;
+        console.log('users',user);
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+  });
     
   };
-  const handleGoogleSignIn = () => {
-    console.log('Google Sign-In clicked');
-    
+ const handleGoogleSignIn = () => {
+    signInWithGoogle()
+    .then(result=>{
+        console.log(result.user);
+    })
+    .catch(error=>{
+        console.log(error.message);
+    })
   };
       return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 flex items-center justify-center p-4">
