@@ -1,17 +1,26 @@
 import { use } from "react";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../contexts/AuthContext";
+import { toast } from "react-toastify";
 
 const Registration = () => {
-  const { signInWithGoogle,signUpWithEmailPassword } = use(AuthContext);
+  const { signInWithGoogle, signUpWithEmailPassword, setLoading } =
+    use(AuthContext);
+
+  let navigate = useNavigate();
   const handleGoogleSignIn = () => {
     signInWithGoogle()
-    .then(result=>{
+      .then((result) => {
+         navigate("/");
+         toast.success("Registration successful with Google")
+        
+
         console.log(result.user);
-    })
-    .catch(error=>{
+      })
+      .catch((error) => {
         console.log(error.message);
-    })
+        toast.error("Error happened in google signin in")
+      });
   };
 
   const handleSubmit = (e) => {
@@ -29,17 +38,21 @@ const Registration = () => {
       password,
     };
     console.log(newUser);
-    signUpWithEmailPassword(email,password)
-    .then((userCredential) => {
-   
-    const user = userCredential.user;
+    signUpWithEmailPassword(email, password)
+      .then((userCredential) => {
+        navigate("/");
+        toast.success('registration Successful')
+         e.target.reset()
+         e.target.reset()
+        const user = userCredential.user;
         console.log(user);
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    console.log(errorMessage);
-  });
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        toast.error(errorMessage)
+        console.log(errorMessage);
+      });
   };
 
   return (

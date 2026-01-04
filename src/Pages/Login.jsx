@@ -1,9 +1,14 @@
 import React, { use } from 'react';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../contexts/AuthContext';
+import { toast } from 'react-toastify';
 
 const Login = () => {
-     const { signInWithGoogle,signInWithEmailAndPassword } = use(AuthContext);
+     const { signInWithGoogle,signInWithEmailPassword } = use(AuthContext);
+     const location = useLocation()
+     console.log(location);
+     let navigate = useNavigate()
+     console.log(location);
     const handleSubmit = (e) => {
     e.preventDefault();
     const email= e.target.email.value;
@@ -11,15 +16,18 @@ const Login = () => {
     const newUser = {
      email,password
     }
-    signInWithEmailAndPassword(email,password)
+   signInWithEmailPassword(email,password)
      .then((userCredential) => {
-    
+      toast.success("Signed In Successfully")
+      e.target.reset()
+    navigate(location?.state || '/')
     const user = userCredential.user;
         console.log('users',user);
   })
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
+    toast.error(errorMessage)
   });
     
   };
@@ -27,8 +35,11 @@ const Login = () => {
     signInWithGoogle()
     .then(result=>{
         console.log(result.user);
+        toast.success("Signed In Successfully with google")
+        navigate(location?.state || '/')
     })
     .catch(error=>{
+      toast.error("Error happened in Google Sign")
         console.log(error.message);
     })
   };

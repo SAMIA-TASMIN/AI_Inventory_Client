@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router';
 
 const ErrorPage = () => {
-    const navigate = useNavigate()
+    let navigate = useNavigate()
     const handleGoHome = () => {
     navigate = '/';
     // Or if using React Router: navigate('/');

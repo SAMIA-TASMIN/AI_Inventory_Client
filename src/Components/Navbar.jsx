@@ -1,26 +1,44 @@
-import React from "react";
-import { Link } from "react-router";
+import React, { use } from "react";
+import { Link, useNavigate } from "react-router";
+import { AuthContext } from "../contexts/AuthContext";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
+  const { user, signOutUser, loading, setLoading } = use(AuthContext);
+  console.log(user);
+  const navigate = useNavigate();
+  const handleLogOut = () => {
+    signOutUser();
+    setLoading(true)
+      .then(() => {
+        toast.success("Log Out Successfully");
+        navigate("/");
+        // Sign-out successful.
+      })
+      .catch((error) => {
+        // An error happened.
+        toast.error("Error During Logout");
+      });
+  };
   const links = (
     <>
       <li>
-       <Link to={'/'}> Home </Link>
+        <Link to={"/"}> Home </Link>
       </li>
       <li>
-       <Link to={'/allmodels'}>All Models</Link>
+        <Link to={"/allmodels"}>All Models</Link>
+      </li>
+      {user && (
+        <li>
+          <Link to={"/addmodels"}> Add Models</Link>
+        </li>
+      )}
+      <li>
+        <Link to={"/register"}>Registration</Link>
       </li>
       <li>
-       <Link to={'/addmodels'}> Add Models</Link>
+        <Link to={"/login"}>Log In</Link>
       </li>
-      <li>
-       <Link to={'/register'}>Registration</Link>
-      </li>
-      <li>
-       <Link to={'/login'}>Log In</Link>
-      </li>
-
-     
     </>
   );
   return (
@@ -57,7 +75,120 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+        {user ? (
+          <>
+            {/* <img src={user?.photoURL} alt="" /> */}
+            {/* <p>{user?.email} </p> */}
+            {/* <div className="dropdown dropdown-left dropdown-hover">
+              <img className="mask mask-circle w-18" src={user?.photoURL} />
+              <ul
+                tabIndex="-1"
+                className="dropdown-content menu bg-base-100 rounded-box z-2  w-52 p-2 shadow-sm"
+              >
+                <li> {user?.displayName} </li>
+                <li>{user?.email} </li>
+                <li> Model Purchased </li>
+                <li> My Model </li>
+              </ul>
+            </div> */}
+            {/* <div className="dropdown dropdown-left dropdown-hover">
+              <img
+                className="mask mask-circle w-12 h-12 object-cover ring-2 ring-blue-500 ring-offset-2 cursor-pointer hover:ring-4 transition-all"
+                src={user?.photoURL}
+                alt="User"
+              />
+              <ul
+                tabIndex="-1"
+                className="dropdown-content menu bg-base-100 rounded-2xl z-50 w-64 p-4 shadow-2xl border border-gray-200"
+              >
+                <li className="mb-3 pb-3 border-b border-gray-200">
+                  <div className="flex items-center gap-3 pointer-events-none">
+                    <img
+                      className="w-10 h-10 rounded-full object-cover"
+                      src={user?.photoURL}
+                      alt="User"
+                    />
+                    <div>
+                      <p className="font-bold text-gray-800">
+                        {user?.displayName}
+                      </p>
+                      <p className="text-xs text-gray-500">{user?.email}</p>
+                    </div>
+                  </div>
+                </li>
+
+                <li>
+                  <a className="hover:bg-blue-50 hover:text-blue-600 rounded-lg font-medium">
+                    📦 Model Purchased
+                  </a>
+                </li>
+                <li>
+                  <a className="hover:bg-blue-50 hover:text-blue-600 rounded-lg font-medium">
+                    🤖 My Model
+                  </a>
+                </li>
+
+                <li className="mt-2 pt-2 border-t border-gray-200">
+                  <a
+                    onClick={handleLogOut}
+                    className="hover:bg-red-50 hover:text-red-600 rounded-lg font-medium text-red-600"
+                  >
+                    🚪 Sign Out
+                  </a>
+                </li>
+              </ul>
+            </div> */}
+
+            <div className="dropdown dropdown-left dropdown-hover">
+              <img
+                className="w-12 h-12 rounded-full object-cover ring-2 ring-blue-500 ring-offset-2 cursor-pointer hover:ring-blue-600 hover:ring-4 transition-all"
+                src={user?.photoURL}
+                alt="User"
+              />
+              <ul
+                tabIndex="-1"
+                className="dropdown-content menu bg-base-100 rounded-2xl z-50 w-64 p-4 shadow-2xl border border-gray-200"
+              >
+                {/* User Info Header */}
+                <li className="mb-3 pb-3 border-b border-gray-200 pointer-events-none hover:bg-transparent">
+                  <div className="flex flex-col gap-1">
+                    <p className="font-bold text-gray-800 text-base">
+                      {user?.displayName}
+                    </p>
+                    <p className="text-sm text-gray-500">{user?.email}</p>
+                  </div>
+                </li>
+
+                {/* Menu Items */}
+                <li>
+                  <a className="hover:bg-blue-50 hover:text-blue-600 rounded-lg font-medium py-2.5">
+                    📦 Model Purchased
+                  </a>
+                </li>
+                <li>
+                  <a className="hover:bg-blue-50 hover:text-blue-600 rounded-lg font-medium py-2.5">
+                    🤖 My Model
+                  </a>
+                </li>
+
+                {/* Logout Button */}
+                <li className="mt-2 pt-2 border-t border-gray-200">
+                  <a className="hover:bg-red-50 hover:text-red-600 rounded-lg font-medium text-red-600 py-2.5">
+                    🚪 Sign Out
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <a onClick={handleLogOut} className="btn ml-4">
+              Log Out
+            </a>
+          </>
+        ) : (
+          <Link to={"/login"} className="btn ml-4">
+            Log In
+          </Link>
+        )}
       </div>
     </div>
   );

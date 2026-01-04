@@ -6,6 +6,7 @@ import Login from "../Pages/Login";
 import Registration from "../Pages/Registration";
 import AllModels from "../Pages/AllModels";
 import AddModels from "../Pages/AddModels";
+import PrivateRoute from "./PrivateRoute";
 // import Root from './Layouts/Root.jsx';
 
 const router = createBrowserRouter([
@@ -28,11 +29,15 @@ const router = createBrowserRouter([
       },
       {
         path:'allmodels',
-        element:<AllModels></AllModels>
+        element:<PrivateRoute>
+          <AllModels></AllModels>
+        </PrivateRoute>
       },
       {
         path:'addmodels',
-        element:<AddModels></AddModels>
+        element:<PrivateRoute>
+          <AddModels></AddModels>
+        </PrivateRoute>
       }
     ]
   },
