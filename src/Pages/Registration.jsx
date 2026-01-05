@@ -31,6 +31,11 @@ const Registration = () => {
     const photoURL = e.target.photoURL.value;
     const password = e.target.password.value;
 
+    const regex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+    if(!regex.test(password)){
+      return toast.error('Password Must Meet the requirements')
+    }
+
     const newUser = {
       name,
       email,
@@ -43,7 +48,7 @@ const Registration = () => {
         navigate("/");
         toast.success('registration Successful')
          e.target.reset()
-         e.target.reset()
+       
         const user = userCredential.user;
         console.log(user);
       })
