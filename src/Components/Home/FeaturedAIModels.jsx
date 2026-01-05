@@ -8,10 +8,11 @@ const FeaturedAIModels = () => {
   const instance = UseAxios();
   useEffect(() => {
     instance.get("recentModels").then((data) => {
+      console.log(data.data);
       setModels(data.data);
     });
   }, [instance]);
-  // max-w-sm w-full  rounded-2xl shadow-lg overflow-hidden hover:scale-[1.02] transition-transform duration-300
+ 
   return (
     <div className="min-h-screen my-10 py-5 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 p-4 sm:p-8">
      <div className="max-w-7xl mx-auto">

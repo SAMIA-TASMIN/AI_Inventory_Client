@@ -7,6 +7,7 @@ import Registration from "../Pages/Registration";
 import AllModels from "../Pages/AllModels";
 import AddModels from "../Pages/AddModels";
 import PrivateRoute from "./PrivateRoute";
+import ViewDetails from "../Pages/ViewDetails";
 // import Root from './Layouts/Root.jsx';
 
 const router = createBrowserRouter([
@@ -28,16 +29,20 @@ const router = createBrowserRouter([
         element:<Registration></Registration>
       },
       {
-        path:'allmodels',
-        element:<PrivateRoute>
+        path:'models',
+        element:
           <AllModels></AllModels>
-        </PrivateRoute>
+       
       },
       {
         path:'addmodels',
         element:<PrivateRoute>
           <AddModels></AddModels>
         </PrivateRoute>
+      },
+      {
+        path:"models/:id",
+        element:<ViewDetails></ViewDetails>
       }
     ]
   },
