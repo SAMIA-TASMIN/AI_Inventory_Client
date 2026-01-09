@@ -8,7 +8,7 @@ const FeaturedAIModels = () => {
   const instance = UseAxios();
   useEffect(() => {
     instance.get("recentModels").then((data) => {
-      console.log(data.data);
+      
       setModels(data.data);
     });
   }, [instance]);

@@ -4,8 +4,8 @@ import { AuthContext } from "../contexts/AuthContext";
 import { toast } from "react-toastify";
 
 const Navbar = () => {
-  const { user, signOutUser, loading, setLoading } = use(AuthContext);
-  console.log(user);
+  const { user, signOutUser, setLoading } = use(AuthContext);
+
   const navigate = useNavigate();
   const handleLogOut = () => {
     signOutUser();
@@ -42,7 +42,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar bg-gradient-to-br from-slate-500 via-purple-100 to-slate-200 ">
+    <div className="navbar bg-gradient-to-br from-black-300 via-purple-500 to-slate-500 ">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

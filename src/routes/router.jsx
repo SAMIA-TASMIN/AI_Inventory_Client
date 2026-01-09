@@ -8,7 +8,9 @@ import AllModels from "../Pages/AllModels";
 import AddModels from "../Pages/AddModels";
 import PrivateRoute from "./PrivateRoute";
 import ViewDetails from "../Pages/ViewDetails";
-// import Root from './Layouts/Root.jsx';
+import UseAxios from "../hooks/UseAxios";
+import UpdateModel from "../Pages/UpdateModel";
+
 
 const router = createBrowserRouter([
   {
@@ -42,8 +44,15 @@ const router = createBrowserRouter([
       },
       {
         path:"models/:id",
+        loader:({params})=>fetch(`http://localhost:3000/models/${params.id}`),
         element:<ViewDetails></ViewDetails>
-      }
+      },
+      {
+        path:"update-model/:id",
+        loader:({params})=>fetch(`http://localhost:3000/models/${params.id}`),
+        element:<UpdateModel></UpdateModel>
+      },
+      
     ]
   },
 ]);

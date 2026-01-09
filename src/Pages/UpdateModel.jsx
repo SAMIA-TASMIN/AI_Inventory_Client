@@ -1,38 +1,23 @@
-import React, { use } from 'react';
-import { AuthContext } from '../contexts/AuthContext';
+import React from 'react';
+import { useLoaderData } from 'react-router';
 
+const UpdateModel = () => {
 
-const AddModels = () => {
-   
-     const handleSubmit = (e) => {
-    e.preventDefault();
-    const name = e.target.name.value;
-    const framework = e.target.framework.value;
-    const useCase = e.target.useCase.value;
-    const dataset = e.target.dataset.value;
-    const description = e.target.description.value;
-    const image = e.target.image.value;
-
-    const newModel = {
-      name,framework,useCase,dataset,description,image
-    }
-    console.log(newModel);
-  
-  };
-    
-      return (
+    const data= useLoaderData()
+    const {name,framework,useCase,dataset,description,image,purchased,_id}=data;
+         return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
       <div className="bg-white shadow-lg rounded-xl w-full max-w-xl p-6">
         <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">
-          Add New AI Model
+          Update  Model
         </h2>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form  className="space-y-4">
           <input
             type="text"
             name="name"
             placeholder="Model Name"
-            
+            defaultValue={name}
             className="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           />
@@ -41,7 +26,7 @@ const AddModels = () => {
             type="text"
             name="framework"
             placeholder="Framework (TensorFlow, PyTorch)"
-            
+             defaultValue={framework}
             className="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           />
@@ -50,7 +35,7 @@ const AddModels = () => {
             type="text"
             name="useCase"
             placeholder="Use Case"
-           
+            defaultValue={useCase}
             className="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           />
@@ -59,7 +44,7 @@ const AddModels = () => {
             type="text"
             name="dataset"
             placeholder="Dataset"
-           
+            defaultValue={dataset}
             className="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           />
@@ -68,7 +53,7 @@ const AddModels = () => {
             name="description"
             placeholder="Description"
             rows="3"
-          
+          defaultValue={description}
             className="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           />
@@ -77,7 +62,7 @@ const AddModels = () => {
             type="url"
             name="image"
             placeholder="Image URL"
-           
+           defaultValue={image}
             className="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           />
@@ -86,7 +71,7 @@ const AddModels = () => {
             type="submit"
             className="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition"
           >
-            Add Model
+            Edit Model
           </button>
         </form>
       </div>
@@ -95,6 +80,4 @@ const AddModels = () => {
   );
 };
 
-export default AddModels;
-
-;
+export default UpdateModel;

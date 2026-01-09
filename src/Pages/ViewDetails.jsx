@@ -1,15 +1,11 @@
 import React from 'react';
+import { Link, useLoaderData } from 'react-router';
 
 const ViewDetails = () => {
-     const modelData = {
-    name: "YOLOv8 Object Detection",
-    framework: "PyTorch",
-    useCase: "Real-time Object Detection",
-    dataset: "COCO Dataset",
-    description: "Advanced object detection model based on YOLOv8 architecture. Capable of detecting 80 different object classes in real-time with high accuracy. Perfect for surveillance, autonomous vehicles, and industrial automation applications.",
-    image: "https://images.unsplash.com/photo-1555255707-c07966088b7b?w=800&h=400&fit=crop",
-    purchasedCount: 3
-  };
+  const data = useLoaderData()
+
+  const {name,framework,useCase,dataset,description,image,purchased,_id}=data;
+  
 
   const handleEdit = () => {
     console.log("Edit clicked");
@@ -29,13 +25,13 @@ const ViewDetails = () => {
           {/* Image Section */}
           <div className="relative h-64 sm:h-80 lg:h-96 overflow-hidden">
             <img 
-              src={modelData.image} 
-              alt={modelData.name} 
+              src={image} 
+              alt={name} 
               className="w-full h-full object-cover"
             />
             <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-sm px-4 py-2 rounded-full">
               <p className="text-white text-sm font-medium">
-                Purchased {modelData.purchasedCount} times
+                Purchased {purchased} times
               </p>
             </div>
           </div>
@@ -44,7 +40,7 @@ const ViewDetails = () => {
           <div className="p-6 sm:p-8 lg:p-10">
             {/* Title */}
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-6">
-              {modelData.name}
+              {name}
             </h1>
 
             {/* Details Grid */}
@@ -52,21 +48,21 @@ const ViewDetails = () => {
               <div className="space-y-1">
                 <p className="text-gray-400 text-sm font-medium">Framework</p>
                 <p className="text-white text-base sm:text-lg font-semibold">
-                  {modelData.framework}
+                  {framework}
                 </p>
               </div>
 
               <div className="space-y-1">
                 <p className="text-gray-400 text-sm font-medium">Use Case</p>
                 <p className="text-white text-base sm:text-lg font-semibold">
-                  {modelData.useCase}
+                  {useCase}
                 </p>
               </div>
 
               <div className="space-y-1 sm:col-span-2">
                 <p className="text-gray-400 text-sm font-medium">Dataset</p>
                 <p className="text-white text-base sm:text-lg font-semibold">
-                  {modelData.dataset}
+                  {dataset}
                 </p>
               </div>
             </div>
@@ -75,7 +71,7 @@ const ViewDetails = () => {
             <div className="mb-8">
               <p className="text-gray-400 text-sm font-medium mb-2">Description</p>
               <p className="text-gray-200 text-sm sm:text-base leading-relaxed">
-                {modelData.description}
+                {description}
               </p>
             </div>
 
@@ -90,12 +86,15 @@ const ViewDetails = () => {
               </button>
 
               {/* Edit Button */}
+             <Link to={`/update-model/${_id}`}>
+             
               <button 
-                onClick={handleEdit}
+                
                 className="px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/30 text-white text-base font-semibold rounded-lg transition-all duration-300 active:scale-95"
               >
                 Edit
               </button>
+             </Link>
 
               {/* Delete Button */}
               <button 
