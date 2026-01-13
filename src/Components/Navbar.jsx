@@ -4,12 +4,12 @@ import { AuthContext } from "../contexts/AuthContext";
 import { toast } from "react-toastify";
 
 const Navbar = () => {
-  const { user, signOutUser, setLoading } = use(AuthContext);
+  const { user, signOutUser } = use(AuthContext);
 
   const navigate = useNavigate();
   const handleLogOut = () => {
-    signOutUser();
-    setLoading(true)
+    signOutUser()
+   
       .then(() => {
         toast.success("Log Out Successfully");
         navigate("/");

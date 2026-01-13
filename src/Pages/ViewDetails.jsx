@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { use } from 'react';
 import { Link, useLoaderData } from 'react-router';
+import { AuthContext } from '../contexts/AuthContext';
 
 const ViewDetails = () => {
   const data = useLoaderData()
+  const{ user} = use(AuthContext)
+  const loggedInUser = user?.email
+  console.log(loggedInUser);
 
-  const {name,framework,useCase,dataset,description,image,purchased,_id}=data;
+  const {name,framework,useCase,dataset,description,image,purchased,_id,createdBy}=data;
   
-
+console.log(createdBy);
   const handleEdit = () => {
     console.log("Edit clicked");
   };
@@ -85,24 +89,28 @@ const ViewDetails = () => {
                 Purchase Model
               </button>
 
-              {/* Edit Button */}
-             <Link to={`/update-model/${_id}`}>
+           
+            
+{
+
+  loggedInUser==createdBy?<> <Link to={`/update-model/${_id}`}>
              
               <button 
-                
                 className="px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/30 text-white text-base font-semibold rounded-lg transition-all duration-300 active:scale-95"
               >
                 Edit
               </button>
              </Link>
-
-              {/* Delete Button */}
               <button 
                 onClick={handleDelete}
                 className="px-6 py-3 bg-red-500/20 hover:bg-red-500/30 border border-red-500/50 text-red-300 hover:text-red-200 text-base font-semibold rounded-lg transition-all duration-300 active:scale-95"
               >
                 Delete
-              </button>
+              </button></>:<></>
+}
+
+
+            
             </div>
           </div>
         </div>

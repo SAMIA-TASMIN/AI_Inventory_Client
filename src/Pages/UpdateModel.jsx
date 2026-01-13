@@ -1,10 +1,18 @@
 import React from 'react';
 import { useLoaderData } from 'react-router';
+import UseAxios from '../hooks/UseAxios';
 
 const UpdateModel = () => {
 
     const data= useLoaderData()
     const {name,framework,useCase,dataset,description,image,purchased,_id}=data;
+
+    const instance = UseAxios()
+
+    const handleUpdate=e=>{
+        e.preventDefault();
+      
+    }
          return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
       <div className="bg-white shadow-lg rounded-xl w-full max-w-xl p-6">
@@ -12,7 +20,10 @@ const UpdateModel = () => {
           Update  Model
         </h2>
 
-        <form  className="space-y-4">
+        <form onSubmit={handleUpdate} className="space-y-4">
+             <label className="block mb-1 text-sm font-medium text-gray-700">
+          Model Name
+        </label>
           <input
             type="text"
             name="name"
@@ -21,7 +32,9 @@ const UpdateModel = () => {
             className="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           />
-
+ <label className="block mb-1 text-sm font-medium text-gray-700">
+          framework
+        </label>
           <input
             type="text"
             name="framework"
@@ -30,7 +43,9 @@ const UpdateModel = () => {
             className="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           />
-
+<label className="block mb-1 text-sm font-medium text-gray-700">
+          Use Case
+        </label>
           <input
             type="text"
             name="useCase"
@@ -39,7 +54,9 @@ const UpdateModel = () => {
             className="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           />
-
+<label className="block mb-1 text-sm font-medium text-gray-700">
+        Dataset
+        </label>
           <input
             type="text"
             name="dataset"
@@ -48,7 +65,9 @@ const UpdateModel = () => {
             className="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           />
-
+<label className="block mb-1 text-sm font-medium text-gray-700">
+         Description
+        </label>
           <textarea
             name="description"
             placeholder="Description"
@@ -57,7 +76,9 @@ const UpdateModel = () => {
             className="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           />
-
+<label className="block mb-1 text-sm font-medium text-gray-700">
+          Image URL
+        </label>
           <input
             type="url"
             name="image"

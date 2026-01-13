@@ -6,9 +6,9 @@ import { toast } from 'react-toastify';
 const Login = () => {
      const { signInWithGoogle,signInWithEmailPassword } = use(AuthContext);
      const location = useLocation()
-     console.log(location);
+  
      let navigate = useNavigate()
-     console.log(location);
+
     const handleSubmit = (e) => {
     e.preventDefault();
     const email= e.target.email.value;
@@ -34,7 +34,7 @@ const Login = () => {
  const handleGoogleSignIn = () => {
     signInWithGoogle()
     .then(result=>{
-        console.log(result.user);
+       
         toast.success("Signed In Successfully with google")
         navigate(location?.state || '/')
     })
