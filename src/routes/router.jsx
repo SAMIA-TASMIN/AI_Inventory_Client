@@ -10,6 +10,8 @@ import PrivateRoute from "./PrivateRoute";
 import ViewDetails from "../Pages/ViewDetails";
 import UseAxios from "../hooks/UseAxios";
 import UpdateModel from "../Pages/UpdateModel";
+import MyModels from "../Pages/MyModels";
+import PurchasedModels from "../Pages/PurchasedModels";
 
 const router = createBrowserRouter([
   {
@@ -57,6 +59,18 @@ const router = createBrowserRouter([
           <UpdateModel></UpdateModel>
         </PrivateRoute>,
       },
+      {
+        path:"myModels",
+        element:<PrivateRoute>
+          <MyModels></MyModels>
+        </PrivateRoute>
+      },
+      {
+        path:"purchasedModels",
+        element:<PrivateRoute>
+          <PurchasedModels></PurchasedModels>
+        </PrivateRoute>
+      }
     ],
   },
 ]);

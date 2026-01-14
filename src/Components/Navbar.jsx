@@ -39,6 +39,12 @@ const Navbar = () => {
       <li>
         <Link to={"/login"}>Log In</Link>
       </li>
+      <li>
+        <Link to={"/myModels"}>My Models</Link>
+      </li>
+      <li>
+        <Link to={"/purchasedModels"}>My Purchased Models</Link>
+      </li>
     </>
   );
   return (
