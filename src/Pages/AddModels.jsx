@@ -1,11 +1,16 @@
 import { use } from "react";
 import { AuthContext } from "../contexts/AuthContext";
+import UseAxios from "../hooks/UseAxios";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router";
 
 const AddModels = () => {
 
 const {user}= use(AuthContext)
 const createdBy = user.email;
+const navigate = useNavigate()
 
+const instance = UseAxios()
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -27,7 +32,13 @@ const createdBy = user.email;
       image,
       createdBy
     };
-    console.log(newModel);
+    instance.post('/models',newModel).then(data=>{
+      console.log(data.data);
+      if(data.data.insertedId){
+        toast.success("Added new models")
+        navigate('/models')
+      }
+    })
   };
 
   return (

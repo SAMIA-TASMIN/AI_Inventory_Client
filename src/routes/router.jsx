@@ -11,51 +11,54 @@ import ViewDetails from "../Pages/ViewDetails";
 import UseAxios from "../hooks/UseAxios";
 import UpdateModel from "../Pages/UpdateModel";
 
-
 const router = createBrowserRouter([
   {
     path: "/",
-    element:<Root></Root>,
-    errorElement:<ErrorPage></ErrorPage>,
-    children:[
+    element: <Root></Root>,
+    errorElement: <ErrorPage></ErrorPage>,
+    children: [
       {
-         index: true, 
-         element: <Home></Home> ,
+        index: true,
+        element: <Home></Home>,
       },
       {
-        path:'login',
-        element:<Login></Login>
+        path: "login",
+        element: <Login></Login>,
       },
       {
-        path:"register",
-        element:<Registration></Registration>
+        path: "register",
+        element: <Registration></Registration>,
       },
       {
-        path:'models',
-        element:
-          <AllModels></AllModels>
-       
+        path: "models",
+        element: <AllModels></AllModels>,
       },
       {
-        path:'addmodels',
-        element:<PrivateRoute>
-          <AddModels></AddModels>
-        </PrivateRoute>
+        path: "addmodels",
+        element: (
+          <PrivateRoute>
+            <AddModels></AddModels>
+          </PrivateRoute>
+        ),
       },
       {
-        path:"models/:id",
-        loader:({params})=>fetch(`http://localhost:3000/models/${params.id}`),
-        element:<ViewDetails></ViewDetails>
+        path: "models/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/models/${params.id}`),
+        element: <PrivateRoute>
+          <ViewDetails></ViewDetails>
+        </PrivateRoute>,
       },
       {
-        path:"update-model/:id",
-        loader:({params})=>fetch(`http://localhost:3000/models/${params.id}`),
-        element:<UpdateModel></UpdateModel>
+        path: "update-model/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/models/${params.id}`),
+        element: <PrivateRoute>
+          <UpdateModel></UpdateModel>
+        </PrivateRoute>,
       },
-      
-    ]
+    ],
   },
 ]);
-
 
 export default router;
