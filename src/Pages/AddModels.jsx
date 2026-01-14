@@ -21,7 +21,7 @@ const instance = UseAxios()
     const dataset = e.target.dataset.value;
     const description = e.target.description.value;
     const image = e.target.image.value;
-    // const createdBy = e.target.createdBy.value;
+   
 
     const newModel = {
       name,
@@ -30,10 +30,11 @@ const instance = UseAxios()
       dataset,
       description,
       image,
-      createdBy
+      createdBy,
+      createdAt:new Date().toISOString()
     };
     instance.post('/models',newModel).then(data=>{
-      console.log(data.data);
+      console.log("data Gula",newModel);
       if(data.data.insertedId){
         toast.success("Added new models")
         navigate('/models')
