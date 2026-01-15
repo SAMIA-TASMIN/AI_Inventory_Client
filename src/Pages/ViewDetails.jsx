@@ -119,7 +119,7 @@ const ViewDetails = () => {
             <div className="flex flex-col sm:flex-row gap-3">
               <button
                 onClick={handlePurchase}
-                className="flex-1 px-4 py-2.5 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white text-sm sm:text-base font-semibold rounded-lg transition-all active:scale-95"
+                className="cursor-pointer flex-1 px-4 py-2.5 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white text-sm sm:text-base font-semibold rounded-lg transition-all active:scale-95"
               >
                 Purchase Model
               </button>
@@ -127,14 +127,14 @@ const ViewDetails = () => {
               {loggedInUser === createdBy && (
                 <>
                   <Link to={`/update-model/${_id}`}>
-                    <button className="px-4 py-2.5 bg-white/10 hover:bg-white/20 border border-white/30 text-white text-sm sm:text-base font-semibold rounded-lg transition-all active:scale-95">
+                    <button className="cursor-pointer px-4 py-2.5 bg-white/10 hover:bg-white/20 border border-white/30 text-white text-sm sm:text-base font-semibold rounded-lg transition-all active:scale-95">
                       Edit
                     </button>
                   </Link>
 
                   <button
                     onClick={handleDelete}
-                    className="px-4 py-2.5 bg-red-500/20 hover:bg-red-500/30 border border-red-500/50 text-red-300 hover:text-red-200 text-sm sm:text-base font-semibold rounded-lg transition-all active:scale-95"
+                    className="cursor-pointer px-4 py-2.5 bg-red-500/20 hover:bg-red-500/30 border border-red-500/50 text-red-300 hover:text-red-200 text-sm sm:text-base font-semibold rounded-lg transition-all active:scale-95"
                   >
                     Delete
                   </button>

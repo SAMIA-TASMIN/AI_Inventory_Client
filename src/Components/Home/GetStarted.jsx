@@ -1,5 +1,6 @@
 import React from 'react';
 import { Rocket, ChevronRight } from 'lucide-react';
+import { Link } from 'react-router';
 
 
 
@@ -21,13 +22,17 @@ const GetStarted = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-purple-600 hover:bg-purple-700 text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-lg flex items-center justify-center gap-2 transition-all hover:scale-105 shadow-lg shadow-purple-500/50">
+          <Link to={'/register'}>
+            <button className="cursor-pointer bg-purple-600 hover:bg-purple-700 text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-lg flex items-center justify-center gap-2 transition-all hover:scale-105 shadow-lg shadow-purple-500/50">
               Register Now
               <ChevronRight className="w-5 h-5" />
             </button>
-            <button className="bg-white/10 hover:bg-white/20 text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-lg border border-white/30 transition-all hover:scale-105">
+          </Link>
+            <Link to={'/login'}>
+            <button className="cursor-pointer bg-white/10 hover:bg-white/20 text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-lg border border-white/30 transition-all hover:scale-105">
               Sign In
             </button>
+            </Link>
           </div>
           
           <p className="text-gray-300 text-sm mt-6">

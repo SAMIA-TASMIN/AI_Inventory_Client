@@ -28,23 +28,23 @@ const Navbar = () => {
       <li>
         <Link to={"/models"}>All Models</Link>
       </li>
-      {user && (
-        <li>
+
+      <li>
           <Link to={"/addmodels"}> Add Models</Link>
         </li>
-      )}
-      <li>
-        <Link to={"/register"}>Registration</Link>
-      </li>
-      <li>
-        <Link to={"/login"}>Log In</Link>
-      </li>
-      <li>
+      {user && (
+       <>
+        
+
+         <li>
         <Link to={"/myModels"}>My Models</Link>
       </li>
+
       <li>
         <Link to={"/purchasedModels"}>My Purchased Models</Link>
       </li>
+       </>
+      )}
     </>
   );
   return (
@@ -166,20 +166,25 @@ const Navbar = () => {
                 </li>
 
                 {/* Menu Items */}
+               <Link to="/purchasedModels">
                 <li>
-                  <a className="hover:bg-blue-50 hover:text-blue-600 rounded-lg font-medium py-2.5">
+                  <p className="hover:bg-blue-50 hover:text-blue-600 rounded-lg font-medium py-2.5">
                     📦 Model Purchased
-                  </a>
+                  </p>
                 </li>
+               </Link>
+                <Link to={`/myModels`}>
+                
                 <li>
-                  <a className="hover:bg-blue-50 hover:text-blue-600 rounded-lg font-medium py-2.5">
+                  <p className="hover:bg-blue-50 hover:text-blue-600 rounded-lg font-medium py-2.5">
                     🤖 My Model
-                  </a>
+                  </p>
                 </li>
+                </Link>
 
                 {/* Logout Button */}
                 <li className="mt-2 pt-2 border-t border-gray-200">
-                  <a className="hover:bg-red-50 hover:text-red-600 rounded-lg font-medium text-red-600 py-2.5">
+                  <a onClick={handleLogOut} className="hover:bg-red-50 hover:text-red-600 rounded-lg font-medium text-red-600 py-2.5">
                     🚪 Sign Out
                   </a>
                 </li>
