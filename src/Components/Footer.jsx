@@ -64,7 +64,7 @@ const Footer = () => {
             <ul className="space-y-2">
               <li>
                 <a 
-                  href="https://github.com/yourusername/frontend-repo" 
+                  href="https://github.com/SAMIA-TASMIN/AI_Inventory_Client" 
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm hover:text-blue-400 transition-colors flex items-center space-x-2"
@@ -84,17 +84,7 @@ const Footer = () => {
                   <span>Backend Repo</span>
                 </a>
               </li>
-              <li>
-                <a 
-                  href="https://github.com/yourusername/mobile-repo" 
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm hover:text-blue-400 transition-colors flex items-center space-x-2"
-                >
-                  <Github className="w-4 h-4" />
-                  <span>Mobile App Repo</span>
-                </a>
-              </li>
+             
             </ul>
           </div>
         </div>
@@ -102,17 +92,16 @@ const Footer = () => {
         {/* Divider */}
         <div className="border-t border-gray-800 my-8"></div>
 
-        {/* Bottom Footer */}
         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-          {/* Copyright */}
+        
           <div className="text-sm text-gray-400">
             © {new Date().getFullYear()} <span className="text-white font-semibold">BrainWave AI</span>. All rights reserved.
           </div>
 
-          {/* Social Links */}
+       
           <div className="flex space-x-6">
             <a 
-              href="https://github.com/yourusername" 
+              href="https://github.com/SAMIA-TASMIN" 
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-blue-400 transition-colors"
@@ -163,8 +152,3 @@ const Footer = () => {
 
 export default Footer;
 
-// import { Github, Mail, Linkedin, Code } from 'lucide-react';
-
-// export default function ResponsiveFooter() {
- 
-// }
