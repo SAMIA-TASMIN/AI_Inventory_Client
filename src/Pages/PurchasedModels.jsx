@@ -1,15 +1,18 @@
 import { Brain } from 'lucide-react';
-import React, { useEffect, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import ModelCard from '../Components/Home/ModelCard';
 import UseAxios from '../hooks/UseAxios';
+import { AuthContext } from '../contexts/AuthContext';
 
 const PurchasedModels = () => {
+    const {user} = use(AuthContext)
    const [models, setModels] = useState([]);
   const instance = UseAxios();
   useEffect(() => {
-    instance.get("recentModels").then((data) => {
+    instance.get(`/purchasedModel?email=${user.email}`).then((data) => {
       
       setModels(data.data);
+      console.log(models);
     });
   }, [instance]);
   return (

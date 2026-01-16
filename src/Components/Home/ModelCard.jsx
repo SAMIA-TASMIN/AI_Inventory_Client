@@ -4,6 +4,7 @@ import { Link } from "react-router";
 const ModelCard = ({ model }) => {
   const { name, framework, dataset, description, image,_id } = model;
 
+
 //   return (
 //     <div>
 //      <div className= " bg-white/5 backdrop-blur-lg rounded-xl overflow-hidden border border-white/10 hover:border-blue-400/40 transition-all hover:scale-105  group">
@@ -62,7 +63,7 @@ return (
         </p>
 
         {/* button always bottom */}
-        <Link to={`/models/${_id}`} className="mt-auto">
+        <Link  to={model.modelId ? `/models/${model.modelId}` : `/models/${model._id}`}className="mt-auto">
           <button className="cursor-pointer w-full mt-4 px-4 py-2 sm:py-2.5 
             bg-gradient-to-r from-orange-300 to-purple-600 
             hover:from-blue-300 hover:to-purple-700 
