@@ -99,7 +99,7 @@ npm start
 cd client
 npm install
 npm run dev
-# Application will open on http://localhost:5173
+
 ```
 
 ---

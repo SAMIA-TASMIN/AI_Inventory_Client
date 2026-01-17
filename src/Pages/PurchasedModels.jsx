@@ -25,11 +25,25 @@ const PurchasedModels = () => {
           My Purchased Models
         </h2>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-        {models.map((model) => (
-          <ModelCard key={model._id} model={model}></ModelCard>
-        ))}
-      </div>
+
+      {/* Empty State */}
+      {models.length === 0 ? (
+        <div className="flex flex-col items-center justify-center py-20">
+          <Brain className="w-16 h-16 text-gray-600 mb-4" />
+          <h3 className="text-xl font-semibold text-gray-300 mb-2">
+            No Purchased Models
+          </h3>
+          <p className="text-gray-400 text-center max-w-md">
+            You haven't purchased any models yet. Browse the marketplace to find models!
+          </p>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          {models.map((model) => (
+            <ModelCard key={model._id} model={model}></ModelCard>
+          ))}
+        </div>
+      )}
      </div>
     </div>
   );

@@ -164,7 +164,7 @@ const ViewDetails = () => {
   const { user } = use(AuthContext);
   const loggedInUser = user?.email;
 
-  // ✅ NEW - State for real-time purchased count যোগ করতে হবে
+  //  NEW - State for real-time purchased count
   const [purchasedCount, setPurchasedCount] = useState(data.purchased || 0);
 
   const {
@@ -189,7 +189,7 @@ const ViewDetails = () => {
     });
   };
 
-  // ✅ MODIFIED - handlePurchase function সম্পূর্ণ পরিবর্তন করতে হবে
+  // ✅ MODIFIED - handlePurchase function 
   const handlePurchase = () => {
     const newPurchasedModel = {
       name,

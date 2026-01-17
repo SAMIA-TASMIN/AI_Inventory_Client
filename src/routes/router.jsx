@@ -46,7 +46,7 @@ const router = createBrowserRouter([
       {
         path: "models/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/models/${params.id}`),
+          fetch(`https://ai-theta-ashy.vercel.app/models/${params.id}`),
         element: <PrivateRoute>
           <ViewDetails></ViewDetails>
         </PrivateRoute>,
@@ -54,7 +54,7 @@ const router = createBrowserRouter([
       {
         path: "update-model/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/models/${params.id}`),
+          fetch(`https://ai-theta-ashy.vercel.app/models/${params.id}`),
         element: <PrivateRoute>
           <UpdateModel></UpdateModel>
         </PrivateRoute>,

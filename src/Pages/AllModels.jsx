@@ -10,7 +10,7 @@ const AllModels = () => {
   const instance = UseAxios();
 
   useEffect(() => {
-    instance.get('http://localhost:3000/models').then(data => {
+    instance.get('https://ai-theta-ashy.vercel.app/models').then(data => {
       setModels(data.data);
     });
   }, [instance]);
@@ -18,8 +18,8 @@ const AllModels = () => {
   // ✅ MODIFIED - Search করার পর input clear হবে
   const handleSearch = () => {
     const url = searchTerm 
-      ? `http://localhost:3000/models/search?q=${searchTerm}`
-      : 'http://localhost:3000/models';
+      ? `https://ai-theta-ashy.vercel.app/models/search?q=${searchTerm}`
+      : 'https://ai-theta-ashy.vercel.app/';
       
     instance.get(url).then(data => {
       setModels(data.data);
@@ -30,13 +30,13 @@ const AllModels = () => {
   // ✅ MODIFIED - শুধু framework filter
   const handleFilter = () => {
     if (!framework) {
-      instance.get('http://localhost:3000/models').then(data => {
+      instance.get('https://ai-theta-ashy.vercel.app/models').then(data => {
         setModels(data.data);
       });
       return;
     }
 
-    const url = `http://localhost:3000/models/filter?framework=${framework}`;
+    const url = `https://ai-theta-ashy.vercel.app/models/filter?framework=${framework}`;
     
     instance.get(url).then(data => {
       setModels(data.data);
@@ -47,7 +47,7 @@ const AllModels = () => {
   const handleReset = () => {
     setSearchTerm('');
     setFramework('');
-    instance.get('http://localhost:3000/models').then(data => {
+    instance.get('https://ai-theta-ashy.vercel.app/models').then(data => {
       setModels(data.data);
     });
   };
